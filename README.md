@@ -20,7 +20,7 @@ $tour->add_pointer(array(
 		'align'     => 'left'
 	),
 	'pointerWidth' => 400,
-	'prev'         => false
+	'prev'         => false,
 	'next'         => 'Start Tour',
 	'dismiss'      => 'Dismiss'
 ));
@@ -33,7 +33,7 @@ $tour->add_pointer(array(
 		'edge'      => 'left',
 		'align'     => 'bottom'
 	),
-	'prev'         => 'Previous'
+	'prev'         => 'Previous',
 	'next'         => '.button',
 	'nextEvent'    => 'click',
 	'dismiss'      => 'End Tour'
