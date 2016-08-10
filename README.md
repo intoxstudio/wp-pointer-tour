@@ -42,8 +42,14 @@ $tour->add_pointer(array(
 //hooks into admin_enqueue_scripts automatically
 //but can be loaded from a specific screen
 if(!$tour->user_has_finished_tour()) {
-    add_action('load-edit.php',array($tour,'enqueue_scripts');
+    add_action('load-edit.php',array($tour,'enqueue_scripts'));
 }
 
 echo $tour->get_user_option(); //finish timestamp
 ```
+
+##License
+
+Copyright 2016 Joachim Jensen
+
+Licensed under the GNU General Public License, version 3: https://opensource.org/licenses/GPL-3.0
