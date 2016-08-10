@@ -6,26 +6,6 @@
  * @copyright 2016 by Joachim Jensen
  */
 
-/**
- * Example
-
-array(
-	'content'   => '<h3>title</h3><p>body</p>',
-	'ref_id'    => '#node',
-	'position'  => array(
-		'edge'      => 'top|bottom|left|right',
-		'align'     => 'center|top|bottom|left|right'
-	),
-	'pointerWidth' => 400,
-	'prev'         => 'string|.class|boolean'
-	'next'         => 'string|.class|boolean',
-	'prevEvent'    => 'jQuery event',
-	'nextEvent'    => 'jQuery event',
-	'dismiss'      => ''
-)
-
- */
-
 if (!defined('ABSPATH')) {
 	die();
 }
