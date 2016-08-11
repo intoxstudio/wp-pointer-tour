@@ -96,7 +96,7 @@ class WP_Pointer_Tour {
 	 * @param  int  $user
 	 * @return int|boolean
 	 */
-	public function get_user_option($user) {
+	public function get_user_option($user = null) {
 		if(!$user) {
 			$user = get_current_user_id();
 		}
