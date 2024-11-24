@@ -81,6 +81,8 @@
 			$widget
 			.css("z-index",1001)
 			.pointer('open');
+			//bluehost-wordpress-plugin sets global .wp-pointer{display:none;}, so override that
+			$widget.pointer('widget')[0].style.setProperty("display", "block", "important");
 
 			$('html, body').animate({
 				scrollTop: $widget.offset().top-50
