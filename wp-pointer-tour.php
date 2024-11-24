@@ -32,9 +32,8 @@ class WP_Pointer_Tour
      */
     private $_enqueued = false;
 
-    public function __construct($meta_key, $pointers = array())
+    public function __construct($meta_key, $pointers = [])
     {
-
         //todo: consider singleton pattern or refactor script localize
 
         $this->_meta_key = $meta_key;
@@ -42,7 +41,7 @@ class WP_Pointer_Tour
 
         add_action(
             'wp_loaded',
-            array($this,'initiate_tour')
+            [$this,'initiate_tour']
         );
     }
 
@@ -57,11 +56,11 @@ class WP_Pointer_Tour
         if (!$this->user_has_finished_tour()) {
             add_action(
                 'admin_enqueue_scripts',
-                array($this,'enqueue_scripts')
+                [$this,'enqueue_scripts']
             );
             add_action(
                 'wp_ajax_cas_finish_tour',
-                array($this,'finish_tour')
+                [$this,'finish_tour']
             );
         }
     }
@@ -134,7 +133,6 @@ class WP_Pointer_Tour
      */
     public function finish_tour()
     {
-
         //Verify nonce
         if (!check_ajax_referer($this->_meta_key, 'nonce', false)) {
             wp_send_json_error('');
@@ -163,21 +161,20 @@ class WP_Pointer_Tour
      */
     public function enqueue_scripts($hook = '')
     {
-
         //scripts can be enqueued manually
         //so do not do it twice
         if ($this->_pointers && !$this->_enqueued) {
             $this->_enqueued = true;
-            wp_enqueue_script('cas/pointers', plugins_url('assets/js/pointers.js', __FILE__), array('wp-pointer'), self::VERSION, true);
+            wp_enqueue_script('cas/pointers', plugins_url('assets/js/pointers.js', __FILE__), ['wp-pointer'], self::VERSION, true);
             wp_enqueue_style('wp-pointer');
 
-            wp_localize_script('cas/pointers', 'WP_PT', array(
+            wp_localize_script('cas/pointers', 'WP_PT', [
                 'pointers' => $this->_pointers,
                 'nonce'    => wp_create_nonce($this->_meta_key),
-                'close'    => __('Close', "content-aware-sidebars"),
+                'close'    => __('Close', 'content-aware-sidebars'),
                 'prev'     => __('Previous', 'content-aware-sidebars'),
-                'next'     => __('Next', "content-aware-sidebars")
-            ));
+                'next'     => __('Next', 'content-aware-sidebars')
+            ]);
         }
     }
 }
